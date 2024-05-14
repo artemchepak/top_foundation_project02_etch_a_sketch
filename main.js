@@ -6,38 +6,29 @@ const btn = document.createElement('button');
 const gameBox = document.createElement('div');
 //add more advanced controlls after implementing basic functionality
 // const controls = document.createElement('div');
+const clearBtn = document.createElement('button');
+
 let gridSize = 16;
 
 title.classList.add('title');
 btn.classList.add('btn');
+clearBtn.classList.add('btn', 'clear');
 gameBox.classList.add('gameBox');
 inputBox.classList.add('inputBox');
 input.classList.add('input');
 
 title.innerHTML = 'Etch-a-Sketch';
-btn.innerHTML = 'Button';
+btn.innerHTML = 'Update grid size';
+clearBtn.innerHTML = 'Clear';
 input.placeholder = 'Enter grid row size'
 
 inputBox.appendChild(input);
 inputBox.appendChild(btn);
+inputBox.appendChild(clearBtn);
 
 container.appendChild(title);
 container.appendChild(inputBox);
 container.appendChild(gameBox);
-
-//function allows user to enter only numbers
-input.onkeydown = function (event) {
-    if (isNaN(event.key) && event.key !== 'Backspace') {
-        event.preventDefault();
-    }
-};
-
-btn.addEventListener('click', () => {
-    //add size limit
-    gridSize = parseInt(input.value);
-    createGrid(gridSize);
-    addHover();
-});
 
 function createGrid(size) {
     i = 0;
@@ -62,9 +53,35 @@ function addHover() {
     });
 }
 
+function clearGrid() {
+    let gameItems = document.querySelectorAll('.gameItem');
+
+    Array.from(gameItems).forEach(function (gameItem) {
+        gameItem.classList.remove('dark-bgc');
+    });
+}
+
 function startGame() {
     createGrid(gridSize);
     addHover();
 }
+
+//function allows user to enter only numbers
+input.onkeydown = function (event) {
+    if (isNaN(event.key) && event.key !== 'Backspace') {
+        event.preventDefault();
+    }
+};
+
+btn.addEventListener('click', () => {
+    //add size limit
+    gridSize = parseInt(input.value);
+    createGrid(gridSize);
+    addHover();
+});
+
+clearBtn.addEventListener('click', () => {
+    clearGrid();
+});
 
 startGame();

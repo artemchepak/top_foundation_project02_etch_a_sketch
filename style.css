@@ -65,7 +65,9 @@ body {
 }
 
 .btn:active {
-    background-color: rgb(116, 184, 116);
+    background-color: darkgreen;
+    color: #e7e7e7;
+
 }
 
 .gameBox {
@@ -96,4 +98,20 @@ body {
 
 .dark-bgc {
     background-color: #333333;
+}
+
+.clear {
+    margin-left: 20px;
+    border: 2px solid lightcoral;
+    background-color: #fff;
+}
+
+.clear:hover {
+    background-color: lightcoral;
+}
+
+.clear:active {
+    background-color: darkred;
+    color: #e7e7e7;
+    border-color: darkred;
 }
