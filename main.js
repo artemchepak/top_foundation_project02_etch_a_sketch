@@ -66,6 +66,14 @@ function startGame() {
     addHover();
 }
 
+function removeGrid() {
+    let gameItems = document.querySelectorAll('.gameItem');
+
+    Array.from(gameItems).forEach(function (gameItem) {
+        gameItem.remove();
+    });
+}
+
 //function allows user to enter only numbers
 input.onkeydown = function (event) {
     if (isNaN(event.key) && event.key !== 'Backspace') {
@@ -76,6 +84,7 @@ input.onkeydown = function (event) {
 btn.addEventListener('click', () => {
     //add size limit
     gridSize = parseInt(input.value);
+    removeGrid();
     createGrid(gridSize);
     addHover();
 });
