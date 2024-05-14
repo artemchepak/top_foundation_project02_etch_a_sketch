@@ -74,6 +74,16 @@ function removeGrid() {
     });
 }
 
+function getUserInput() {
+    let userInput = parseInt(input.value);
+    if (userInput < 1 || userInput > 100) {
+        alert('Only numbers between 1 to 100 are valid');
+    }
+    else {
+        gridSize = userInput;
+    }   
+}
+
 //function allows user to enter only numbers
 input.onkeydown = function (event) {
     if (isNaN(event.key) && event.key !== 'Backspace') {
@@ -83,7 +93,7 @@ input.onkeydown = function (event) {
 
 btn.addEventListener('click', () => {
     //add size limit
-    gridSize = parseInt(input.value);
+    getUserInput()
     removeGrid();
     createGrid(gridSize);
     addHover();
